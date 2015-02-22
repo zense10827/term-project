@@ -1,0 +1,21 @@
+{
+  "Cucumber Features": {
+    "coverage": {
+      "/home/ubuntu/workspace/term-project/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/application_helper.rb": [
+        1,
+        null
+      ]
+    },
+    "timestamp": 1424604296
+  },
+  "RSpec": {
+    "coverage": {
+    },
+    "timestamp": 1424604361
+  }
+}
