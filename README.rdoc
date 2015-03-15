@@ -1,3 +1,7 @@
+Heroku URL: https://pure-mountain-9716.herokuapp.com/
+Git Heroku URL: https://git.heroku.com/pure-mountain-9716.git
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
