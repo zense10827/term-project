@@ -1,0 +1,41 @@
+- [:notice, :error, :success].each do |key|
+  - unless flash[key].blank?
+    %p{ :class => "flash #{key}" }= flash[key] 
+
+-#  This file is app/views/course/index.html.haml
+%h1 All Course
+
+%table#courses.pure-table.centerino
+  %thead
+    %tr
+      %th Sudject ID
+      %th Subject
+      %th Describe
+      %th Teacher ID
+      %th Section
+      %th Semester
+      %th Curriculum
+      %th Available
+      %th Delete
+      %th Option
+  %tbody
+    - @courses.each do |course|
+      %tr
+        %td= course.SID
+        %td= course.name
+        %td= course.about
+        %td= link_to "#{course.TID}", "/teacher/#{course.TID}"
+        %td= course.section
+        %td= course.semester
+        %td= course.curriculum
+        %td= course.available
+        %td= link_to "Delete", "#{course.id}", :method => :delete
+        %td= link_to "#{course.SID}", "detail/#{course.id}"
+    %tr
+      %td{:colspan => 10}= link_to 'Add new Course', 'add'
+%br
+= link_to 'Add new Course', '/course/add'
+%br
+= link_to 'Add new Instructor', '/teacher/add'
+%br
+= link_to 'View all Instructor', '/teacher/all'

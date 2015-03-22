@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TermProject</title>
+  <link href="/assets/application.css?body=1" media="all" rel="stylesheet" type="text/css" />
+  <script src="/assets/jquery.js?body=1" type="text/javascript"></script>
+<script src="/assets/jquery_ujs.js?body=1" type="text/javascript"></script>
+<script src="/assets/about.js?body=1" type="text/javascript"></script>
+<script src="/assets/course.js?body=1" type="text/javascript"></script>
+<script src="/assets/application.js?body=1" type="text/javascript"></script>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="8qhZoTWfq3phMoEGPFyuk+qwltgWbk9rCEdy8AHuWbE=" name="csrf-token" />
+</head>
+<body>
+
+<h1 class='h1 centerino'>About</h1>
+<br>
+<h2 class='centerino'>รายชื่อ</h2>
+<table class='pure-table nametable centerino' id='movies'>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Student ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>นางสาว บัณฑิตา</td>
+      <td>อวยชัยเจริญ</td>
+      <td>5510613234</td>
+    </tr>
+    <tr>
+      <td>นางสาว วรินทร</td>
+      <td>เขมชัยวิพุธ</td>
+      <td>5510613259</td>
+    </tr>
+    <tr>
+      <td>นางสาว รุจิรางค์</td>
+      <td>ไวยดารา</td>
+      <td>5510613275</td>
+    </tr>
+    <tr>
+      <td>นางสาว ชมพูนิกข์</td>
+      <td>ประการแก้ว</td>
+      <td>5510613325</td>
+    </tr>
+    <tr>
+      <td>นางสาว ณัฐณิชา</td>
+      <td>เหลืองอ่อน</td>
+      <td>5510613424</td>
+    </tr>
+    <tr>
+      <td>นาย อานันท์</td>
+      <td>ศุภวิไล</td>
+      <td>5510613317</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2>Requirement</h2>
+<div class='listAbox centerino'>
+  <ul>
+    <li>1.เพิ่มวิชา</li>
+    <li>2.ลบวิชา</li>
+    <li>3.ค้นหาชื่อวิชา (จาก id วิชา / ชื่อคนสอน / ภาคการศึกษา)</li>
+    <li>4.แสดงตารางเรียน (ต้องใช้ข้อมูลกลุ่มอื่น)</li>
+    <li>5.ดูรายละเอียดวิชา (ค้นจากชื่อวิชา / id วิชา โดยแสดง )</li>
+    <ul>
+      <li>5.1 id</li>
+      <li>5.2 ชื่อวิชา</li>
+      <li>5.3 ภาคเรียน</li>
+      <li>5.4 ผู้สอน</li>
+      <li>5.5 ห้องเรียน</li>
+      <li>5.6 ห้องสอบ"</li>
+    </ul>
+  </ul>
+</div>
+<br>
+<h2>ER Diagram</h2>
+<img alt="Er-1" src="/assets/ER-1.jpg" />
+<h2>User Stories</h2>
+<div style="margin-left:20px;">
+  <pre>Feature: Add a course to database
+  As a admin
+  So that I can share a course
+  I want to add a course to course database
+
+Feature: Edit a course in database
+  As a admin
+  So that I can edit a course
+  I want to edit a course in course database
+
+Feature: Delete a course in database
+  As a admin
+  So that I can delete a course
+  I want to delete a course in course database
+
+Feature: Search a course in database
+  As a Search Course Page
+  So that I can search a course from id,instructor,semester
+  I want to search a course
+
+Feature: Course Schedule
+  As a Course Schedule Page
+  So that I can see all Course Schedule
+  I want to see all Course Schedule
+
+Feature: Course Information
+  As a Course Information Page
+  So that I can see course ID, subject, semester, course instructor, classroom, exam room
+  I want to see all course information</pre>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+- [:notice, :error, :success].each do |key|
+  - unless flash[key].blank?
+    %p{ :class => "flash #{key}" }= flash[key] 
+    
+%h1 All Instructor
+%table#courses.pure-table.centerino
+  %thead
+    %tr
+      %th ID
+      %th Teacher ID
+      %th Name
+      %th Major
+      %th Delete
+      %th Option
+  %tbody
+    - @teacher.each do |aj|
+      %tr
+        %td= aj.id
+        %td= aj.TID
+        %td= aj.instructor_name
+        %td= aj.major
+        %td= link_to "Delete", "#{aj.id}", :method => :delete
+        %td= link_to "#{aj.id}", "teacher/index/#{aj.id}"
+    %tr
+      %td{:colspan => 10}= link_to 'Add new Instructor', '/teacher/add'
+      
+%br
+= link_to 'Add new Course', '/course/add'
+%br
+= link_to 'Add new Instructor', '/teacher/add'
+%br
+= link_to 'View all course', '/course/index'

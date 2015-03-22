@@ -5,7 +5,7 @@
 .listAbox{
     margin-left:auto;
     margin-right:auto;
-    width:35%;
+    width:350%;
 }
 
 
@@ -38,7 +38,12 @@ html {
  */
 
 body {
-  margin: 0;
+  margin-left: 20px;
+}
+
+centerino{
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
 }
 

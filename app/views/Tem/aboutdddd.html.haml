@@ -1,32 +1,32 @@
-%h1.h1 About
+%h1.h1.centerino About
 %br
 
-%h2 รายชื่อ
-%table#movies.pure-table.nametable
+%h2.centerino รายชื่อ
+%table#movies.pure-table.nametable.centerino
   %thead
     %tr
-      %th Student ID
       %th Firstname
       %th Lastname
+      %th Student ID
   %tbody
     %tr
-      %td= "นางสาวบัณฑิตา"
+      %td= "นางสาว บัณฑิตา"
       %td= "อวยชัยเจริญ"
       %td= "5510613234"
     %tr
-      %td= "นางสาววรินทร"
+      %td= "นางสาว วรินทร"
       %td= "เขมชัยวพุธ"
       %td= "5510613259"
     %tr
-      %td= "นางสาวรุจิรางค์"
+      %td= "นางสาว รุจิรางค์"
       %td= "ไวยดารา"
       %td= "5510613275"
     %tr
-      %td= "นางสาวชมพูนิกข์"
+      %td= "นางสาว ชมพูนิกข์"
       %td= "ประการแก้ว"
       %td= "5510613325"
     %tr
-      %td= "นางสาวณัฐณิชา"
+      %td= "นางสาว ณัฐณิชา"
       %td= "เหลืองอ่อน"
       %td= "5510613424"
     %tr
@@ -35,7 +35,7 @@
       %td= "5510613317"
 %br
 %h2 Requirement
-%div.listAbox
+%div.listAbox.centerino
   %ul
     %li 1.เพิ่มวิชา
     %li 2.ลบวิชา
@@ -55,33 +55,14 @@
 =image_tag "ER-1.jpg"
 
 %h2 User Stories
-%pre
-  Feature: Add
-    As a admin
-    So that I can share a course
-    I want to add a course to course database
-
-  Feature: Edit 
-    As a admin
-    So that I can edit a course
-    I want to edit a course in course database
-
-  Feature: Delete 
-    As a admin
-    So that I can delete a course
-    I want to delete a course in course database
-
-  Feature: Search 
-    As a Search Course Page
-    So that I can search a course from id,instructor,semester
-    I want to search a course
-
-  Feature: Course Schedule
-    As a Course Schedule Page
-    So that I can see all Course Schedule
-    I want to see all Course Schedule
-
-  Feature: Course Information
-    As a Course Information Page
-    So that I can see course ID, subject, semester, course instructor, classroom, exam room
-    I want to see all course information
+%div
+  %pre
+    :preserve
+      Feature: Add
+        As a admin
+        So that I can share a course
+        I want to add a course to course database
+      Feature: Edit 
+        As a admin
+        So that I can edit a course
+        I want to edit a course in course database

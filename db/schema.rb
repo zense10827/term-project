@@ -11,6 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20150322175600) do
+
+  create_table "courses", :force => true do |t|
+    t.integer  "TID"
+    t.string   "SID"
+    t.string   "name"
+    t.string   "semester"
+    t.text     "about"
+    t.integer  "section"
+    t.string   "curriculum"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "available"
+  end
+#TID = instructors.id
+  create_table "instructors", :force => true do |t|
+    t.integer  "TID"
+    t.string   "instructor_name"
+    t.string   "major"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
 end
