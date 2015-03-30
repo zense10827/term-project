@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20150322175600) do
 
   create_table "courses", :force => true do |t|
-    t.integer  "TID"
+    t.integer  "TID" #TID = instructors.id
     t.string   "SID"
     t.string   "name"
     t.string   "semester"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20150322175600) do
     t.datetime "updated_at", :null => false
     t.string   "available"
   end
-#TID = instructors.id
+
   create_table "instructors", :force => true do |t|
     t.integer  "TID"
     t.string   "instructor_name"

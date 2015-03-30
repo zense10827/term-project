@@ -10,9 +10,14 @@ module NavigationHelpers
   #
   # step definition in web_steps.rb
   #
+  
+  
   def path_to(page_name)
     case page_name
-
+    when /^the add page/ then '/course/add'
+    when /^the add instructor page/ then '/teacher/add'
+    when /^all page/ then '/course/index'
+    when /^view instructor page/ then '/teacher/all'
     when /^the home\s?page$/
       '/'
 

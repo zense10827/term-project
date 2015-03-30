@@ -1,0 +1,34 @@
+-#  This file is app/views/course/information.html.haml
+%p Find me in app/views/course/information.html.haml
+
+%h2 Details about #{@course.name}
+
+%ul#details
+  %li
+    Name:
+    = @course.name
+  %li
+    SID:
+    = @course.SID
+  %li
+    Instructor:
+    = @teacher.instructor_name
+  %li
+    Instructor ID:
+    = @teacher.id
+  %li
+    Describe:
+    = @course.about
+  %li
+    Section:
+    = @course.section
+  %li
+    Semester:
+    = @course.semester
+  %li
+    Curriculum:
+    = @course.curriculum
+  %li
+    Available:
+    = @course.available
+    

@@ -1,7 +1,7 @@
 %h1 Course#add_teacher
 %p Find me in app/views/course/add_teacher.html.haml
 
-%h1 Add New Course
+%h1 Add New Instructor
 
 = form_tag({:action => 'create'},{:class => 'pure-form pure-form-aligned'}) do
   %div.pure-control-group
@@ -14,4 +14,4 @@
     = label :instructor, :major, 'Major'
     = text_field :instructor, 'major'
 
-  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary'
+  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary', :id => 'add_submit'

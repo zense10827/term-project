@@ -3,8 +3,12 @@ class TeacherController < ApplicationController
     @teacher = Instructor.find(params[:TID])
   end
   def create
-    @teacher = Instructor.create!(params[:instructor])
-    flash[:notice] = "#{@teacher.TID} was successfully created."
+    if params[:instructor][:major] == "" or params[:instructor][:instructor_name] == "" or params[:instructor][:TID] == ""
+      flash[:notice] = "ERROR"
+    else
+      @teacher = Instructor.create!(params[:instructor])
+      flash[:notice] = "#{@teacher.TID} was successfully created."
+    end
     redirect_to "/course/add"
   end
   def add
@@ -15,7 +19,7 @@ class TeacherController < ApplicationController
   def destroy
     @teacher = Instructor.find(params[:id])
     @teacher.destroy
-    flash[:notice] = "Course '#{@teacher.instructor_name}'/'#{@teacher.id}' deleted."
+    flash[:notice] = "Instructor '#{@teacher.instructor_name}' deleted."
     redirect_to "/teacher/all"
   end
 end

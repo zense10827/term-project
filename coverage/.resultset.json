@@ -9,13 +9,172 @@
       "/home/ubuntu/workspace/term-project/app/helpers/application_helper.rb": [
         1,
         null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/course_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/teacher_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/controllers/course_controller.rb": [
+        1,
+        1,
+        7,
+        null,
+        1,
+        8,
+        null,
+        1,
+        4,
+        4,
+        3,
+        null,
+        1,
+        1,
+        null,
+        4,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/course.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/controllers/teacher_controller.rb": [
+        1,
+        1,
+        0,
+        null,
+        1,
+        4,
+        3,
+        null,
+        1,
+        1,
+        null,
+        4,
+        null,
+        1,
+        null,
+        1,
+        2,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/instructor.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1424604296
+    "timestamp": 1427643049
   },
   "RSpec": {
     "coverage": {
+      "/home/ubuntu/workspace/term-project/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/course_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/teacher_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/controllers/course_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/course.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/controllers/teacher_controller.rb": [
+        1,
+        1,
+        0,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/instructor.rb": [
+        1,
+        1,
+        null
+      ]
     },
-    "timestamp": 1424604361
+    "timestamp": 1427673409
   }
 }

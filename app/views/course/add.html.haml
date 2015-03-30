@@ -1,11 +1,6 @@
-%br
-= link_to 'Add new Course', '/course/add'
-%br
-= link_to 'Add new Instructor', '/teacher/add'
-%br
-= link_to 'View all Instructor', '/teacher/all'
-
 %h1 Add New Course
+
+%p= flash[:notice]
 
 = form_tag({:action => 'create'},{:class => 'pure-form pure-form-aligned'}) do
   %div.pure-control-group
@@ -26,7 +21,7 @@
     = text_field :course, 'section'
   %div.pure-control-group
     = label :course, :semester, 'Semester'
-    = select :course, :semester, ['1','2','summer']
+    = select :course, :semester, ['Please select','1','2','summer']
   %div.pure-control-group
     = label :course, :curriculum, 'Curriculum'
     = text_field :course, 'curriculum'
@@ -37,4 +32,4 @@
     = label :course, :available, 'Is available this semester?'
     = select :course, :available, ['Yes','No']
   %div.pure-control
-  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary'
+  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary', :id => 'add_submit'

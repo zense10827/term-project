@@ -10,6 +10,7 @@ TermProject::Application.routes.draw do
   get "course/index"
   get "course/add"
   get "course/about"
+  get "course/information/:id", to: 'course#information', as: :id
   resources :course,:teacher
   root :to => redirect('/course/index')
 end
