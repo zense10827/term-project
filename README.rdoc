@@ -1,6 +1,6 @@
 Heroku URL: https://pure-mountain-9716.herokuapp.com/
 Git Heroku URL: https://git.heroku.com/pure-mountain-9716.git
-
+https://github.com/zense10827/term-project.git
 
 == Welcome to Rails
 
