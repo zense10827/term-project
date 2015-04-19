@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20150322175600) do
 
   create_table "courses", :force => true do |t|
-    t.integer  "TID" #TID = instructors.id
+    t.integer  "TID"
     t.string   "SID"
     t.string   "name"
     t.string   "semester"

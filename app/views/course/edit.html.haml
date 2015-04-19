@@ -1,0 +1,35 @@
+%h1 Edit A Course
+
+%p= flash[:notice]
+
+= form_tag({:action => 'update'},{:class => 'pure-form pure-form-aligned'}) do
+  %div.pure-control-group
+    = label :course, :SID, 'Subject ID'
+    = text_field :course, 'SID', {:value => @course.SID}
+  %div.pure-control-group
+    = label :course, :TID, 'Teacher ID'
+    %select{:name => 'course[TID]',:id => 'course_TID'}
+      -@teacher.each do |c|
+        %option{:value=>c.id}
+          =h c.instructor_name
+    = link_to 'Add new instructor', '/teacher/add'
+  %div.pure-control-group
+    = label :course, :name, 'Subject Name'
+    = text_field :course, 'name'
+  %div.pure-control-group
+    = label :course, :section, 'Section'
+    = text_field :course, 'section'
+  %div.pure-control-group
+    = label :course, :semester, 'Semester'
+    = select :course, :semester, ['Please select','1','2','summer']
+  %div.pure-control-group
+    = label :course, :curriculum, 'Curriculum'
+    = text_field :course, 'curriculum'
+  %div.pure-control-group
+    = label :course, :about, 'About this subject'
+    = text_field :course, 'about'  
+  %div.pure-control-group
+    = label :course, :available, 'Is available this semester?'
+    = select :course, :available, ['Yes','No']
+  %div.pure-control
+  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary', :id => 'edit_submit'

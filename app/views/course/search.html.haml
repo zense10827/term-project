@@ -1,0 +1,41 @@
+%h2 Search Course
+
+= form_tag({:action => 'search'},{:class => 'pure-form pure-form-aligned'}) do
+  %div.pure-control-group
+    = label :course, :name, 'Search by '
+    %select#by{:name => "by"}
+      %option{:value => "SID", :selected => @by == 'SID'} SID
+      %option{:value => "name", :selected => @by == 'name'} name
+      %option{:value => "section", :selected => @by == 'section'} section
+      %option{:value => "semester", :selected => @by == 'semester'} semester
+    %input#name{:type => "text",:name => "name", :value => @seachBox}
+    = submit_tag 'Confirm Search', class: 'pure-button pure-button-primary', :id => 'search_submit'
+- if @found > 0
+  %table#courses.pure-table.centerino
+    %thead
+      %tr
+        %th Sudject ID
+        %th Subject
+        %th Describe
+        %th Teacher ID
+        %th Section
+        %th Semester
+        %th Curriculum
+        %th Available
+        %th Delete
+        %th Option
+    %tbody
+      - @courses.each do |course|
+        %tr
+          %td= course.SID
+          %td= course.name
+          %td= course.about
+          %td= link_to "#{course.TID}", "/teacher/#{course.TID}"
+          %td= course.section
+          %td= course.semester
+          %td= course.curriculum
+          %td= course.available
+          %td= link_to "Delete", "#{course.id}", :method => :delete, :id => "delete_submit_#{course.SID}"
+          %td= link_to "#{course.SID}", "information/#{course.id}", :id => "info_submit_#{course.SID}"
+- else
+  %h2 Not Found

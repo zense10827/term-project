@@ -2,6 +2,7 @@
 %p Find me in app/views/course/information.html.haml
 
 %h2 Details about #{@course.name}
+%p= flash[:notice]
 
 %ul#details
   %li
@@ -31,4 +32,6 @@
   %li
     Available:
     = @course.available
+  %li
+    = link_to "Edit",  "#{@course.id}/edit", :id => "edit_submit_#{@course.SID}"
     

@@ -25,4 +25,33 @@ class CourseController < ApplicationController
     @course = Course.find(params[:id])
     @teacher = Instructor.find(@course.TID)
   end
+  def update
+    if params[:course][:semester] =~ /Please select/ or params[:course][:SID] == "" or params[:course][:name] == "" 
+      @course = Course.find(params[:id])
+      flash[:notice] = "ERROR"
+    else
+      @course = Course.find(params[:id])
+      @course.name = params[:course][:name]
+      @course.save
+      @teacher = Instructor.all
+      flash[:notice] = "#{@course.SID} was successfully edited."
+    end
+    redirect_to "/course/information/#{@course.id}"
+  end
+  def edit
+    @course = Course.find(params[:id])
+    @teacher = Instructor.all
+  end
+  def search
+    if params[:name]
+      @courses = Course.where("#{params[:by]} = ?", params[:name])
+      @found = @courses.count
+      @by = params[:by]
+      @seachBox = params[:name]
+    else
+      @by = 'SID'
+      @seachBox = ''
+      @found = 0
+    end
+  end
 end

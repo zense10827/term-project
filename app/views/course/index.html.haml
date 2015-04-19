@@ -30,7 +30,9 @@
         %td= link_to "Delete", "#{course.id}", :method => :delete, :id => "delete_submit_#{course.SID}"
         %td= link_to "#{course.SID}", "information/#{course.id}", :id => "info_submit_#{course.SID}"
     %tr
-      %td{:colspan => 10}= link_to 'Add new Course', 'add'
+      %td{:colspan => 10}= link_to 'Add new Course', '/course/add'
+%br
+= link_to 'Search Course', '/course/search'
 %br
 = link_to 'Add new Course', '/course/add'
 %br
