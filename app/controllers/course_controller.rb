@@ -49,7 +49,7 @@ class CourseController < ApplicationController
       @by = params[:by]
       @seachBox = params[:name]
     else
-      @by = 'sid'
+      @by = 'SID'
       @seachBox = ''
       @found = 0
     end

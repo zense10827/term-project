@@ -4,7 +4,7 @@
   %div.pure-control-group
     = label :course, :name, 'Search by '
     %select#by{:name => "by"}
-      %option{:value => "sid", :selected => @by == 'sid'} SID
+      %option{:value => "SID", :selected => @by == 'SID'} SID
       %option{:value => "name", :selected => @by == 'name'} name
       %option{:value => "section", :selected => @by == 'section'} section
       %option{:value => "semester", :selected => @by == 'semester'} semester
