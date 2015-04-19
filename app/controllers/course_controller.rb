@@ -45,7 +45,7 @@ class CourseController < ApplicationController
   def search
     if params[:name]
       @courses = Course.where("#{params[:by]} = ?", params[:name])
-      @found = @courses.count
+      @found = Course.where("#{params[:by]} = ?", params[:name]).count
       @by = params[:by]
       @seachBox = params[:name]
     else
