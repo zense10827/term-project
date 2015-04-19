@@ -39,3 +39,7 @@
           %td= link_to "#{course.SID}", "information/#{course.id}", :id => "info_submit_#{course.SID}"
 - else
   %h2 Not Found
+  
+  %h2 Has Bug on Heroku search by sid because column name has been blocked by Heroku
+  %h2 Try On C9 Server
+  = link_to "C9 Server", "https://project-cmm-zense10827.c9.io/"
