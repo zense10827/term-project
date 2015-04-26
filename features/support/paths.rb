@@ -20,6 +20,8 @@ module NavigationHelpers
     when /^view instructor page/ then '/teacher/all'
     when /^the information page/ then '/course/information/#{"@course.id"}'
     when /^the edit page/ then '/course/information/#{"@course.id"}/edit'
+    when /^the add user page/ then '/user/add'
+    when /^the user page/ then '/user/index'
     when /^the search page/ then 'course/search'
     when /^the home\s?page$/
       '/'

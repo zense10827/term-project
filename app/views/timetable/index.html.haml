@@ -1,0 +1,47 @@
+- [:notice, :error, :success].each do |key|
+  - unless flash[key].blank?
+    %p{ :class => "flash #{key}" }= flash[key] 
+
+%h1 View Timetable
+= form_tag({:action => 'view'},{:class => 'pure-form pure-form-aligned'}) do
+  %div.pure-control-group
+    = label :schedule, :uid, 'Username'
+    %select{:name => 'id',:id => 'id'}
+      %option{:value=>'Please select'} Please select
+      -@users.each do |c|
+        %option{:value=>c.id}
+          =h c.uname
+  = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
+  
+%h1 Registration
+= form_tag({:action => 'regis'},{:class => 'pure-form pure-form-aligned'}) do
+  %div.pure-control-group
+    = label :schedule, :uid, 'Username'
+    %select{:name => 'study[user_id]',:id => 'study_user_id'}
+      %option{:value=>'Please select'} Please select
+      -@users.each do |c|
+        %option{:value=>c.id}
+          =h c.uname
+  %div.pure-control-group
+    = label :schedule, :uid, 'Course'
+    %select{:name => 'study[course_id]',:id => 'study_course_id'}
+      %option{:value=>'Please select'} Please select
+      -@courses.each do |c|
+        %option{:value=>c.id}
+          =h "#{c.id} # #{c.SID}"
+  = submit_tag 'Submit', class: 'pure-button pure-button-primary', :id => 'regis_submit'
+
+%br
+= link_to 'Search Course', '/course/search'
+%br
+= link_to 'Add new Course', '/course/add'
+%br
+= link_to 'Add new Instructor', '/teacher/add'
+%br
+= link_to 'View all Instructor', '/teacher/all'
+%br
+= link_to 'About Us', '/course/about'
+%br
+= link_to 'View all User', '/user/index'
+%br
+= link_to 'Time Table', '/timetable/index'

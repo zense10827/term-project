@@ -2,27 +2,23 @@
   - unless flash[key].blank?
     %p{ :class => "flash #{key}" }= flash[key] 
     
-%h1 All Instructor
+%h1 Show All Users
 %table#courses.pure-table.centerino
   %thead
     %tr
-      %th ID
-      %th Teacher ID
-      %th Name
-      %th Major
-      %th Delete
-      %th Option
+      %th User ID
+      %th Username
+      %th Time Table
+      %th Remove
   %tbody
-    - @teacher.each do |aj|
+    - @users.each do |user|
       %tr
-        %td= aj.id
-        %td= aj.TID
-        %td= aj.instructor_name
-        %td= aj.major
-        %td= link_to "Delete", "#{aj.id}", :method => :delete, :id => "delete_submit_#{aj.instructor_name}"
-        %td= link_to "#{aj.id}", "teacher/index/#{aj.id}"
+        %td= user.id
+        %td= user.uname
+        %td= link_to "View", "/timetable/view/#{user.id}"
+        %td= link_to "Delete", "#{user.id}", :method => :delete, :id => "delete_submit_#{user.uname}"
     %tr
-      %td{:colspan => 10}= link_to 'Add new Instructor', '/teacher/add'
+      %td{:colspan => 10}= link_to 'Add new User', '/user/add'
       
 %br
 = link_to 'Search Course', '/course/search'

@@ -1,0 +1,13 @@
+%h1 Add New CUser
+
+%p= flash[:notice]
+
+= form_tag({:action => 'create'},{:class => 'pure-form pure-form-aligned'}) do
+  %div.pure-control-group
+    = label :user, :uname, 'Username'
+    = text_field :user, 'uname'
+  %div.pure-control-group
+    = label :user, :password, 'Password'
+    = password_field(:user, :password, size: 20)
+  %div.pure-control
+  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary', :id => 'add_submit'

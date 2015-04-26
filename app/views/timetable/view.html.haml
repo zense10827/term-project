@@ -1,8 +1,14 @@
--#  This file is app/views/course/index.html.haml
-%h1 All Course
-
-%p= flash[:notice]
-
+%h1 View Timetable #{@find.uname}
+= form_tag({:action => 'view'},{:class => 'pure-form pure-form-aligned'}) do
+  %div.pure-control-group
+    = label :schedule, :uid, 'Username'
+    %select{:name => 'id',:id => 'id'}
+      -@users.each do |c|
+        %option{:value => c.id, :selected => @find==c}
+          =h c.uname
+  = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
+  
+%h2 #{@find.uname} Register
 %table#courses.pure-table.centerino
   %thead
     %tr
@@ -14,8 +20,7 @@
       %th Semester
       %th Curriculum
       %th Available
-      %th Delete
-      %th Option
+
   %tbody
     - @courses.each do |course|
       %tr
@@ -27,10 +32,8 @@
         %td= course.semester
         %td= course.curriculum
         %td= course.available
-        %td= link_to "Delete", "#{course.id}", :method => :delete, :id => "delete_submit_#{course.SID}"
-        %td= link_to "#{course.SID}", "information/#{course.id}", :id => "info_submit_#{course.SID}"
-    %tr
-      %td{:colspan => 10}= link_to 'Add new Course', '/course/add'
+
+
 %br
 = link_to 'Search Course', '/course/search'
 %br
@@ -44,4 +47,4 @@
 %br
 = link_to 'View all User', '/user/index'
 %br
-= link_to 'Time Table', '/timetable/index'
+= link_to 'Time Table & Registration', '/timetable/index'

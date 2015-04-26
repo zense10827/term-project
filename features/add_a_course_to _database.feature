@@ -60,7 +60,7 @@ Scenario: view course information
   And I follow "info_submit_CN418"
   Then I should see "Details about Parallel"
 
-Scenario: delete a course database
+Scenario: delete a course in database
   Given I am on all page
   And I follow "delete_submit_CN418"
   Then I should see "Course 'CN418' deleted."
