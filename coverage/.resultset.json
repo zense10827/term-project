@@ -130,6 +130,8 @@
         0,
         null,
         0,
+        0,
+        null,
         null,
         null,
         1,
@@ -190,7 +192,7 @@
         null
       ]
     },
-    "timestamp": 1430083293
+    "timestamp": 1430120861
   },
   "RSpec": {
     "coverage": {
@@ -208,6 +210,14 @@
         null
       ],
       "/home/ubuntu/workspace/term-project/app/helpers/teacher_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/timetable_helper.rb": [
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/helpers/user_helper.rb": [
         1,
         null
       ],
@@ -302,12 +312,81 @@
         null,
         null
       ],
+      "/home/ubuntu/workspace/term-project/app/controllers/timetable_controller.rb": [
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/controllers/user_controller.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        0,
+        null,
+        0,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/user.rb": [
+        1,
+        1,
+        null
+      ],
       "/home/ubuntu/workspace/term-project/app/models/instructor.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/schedule.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/term-project/app/models/study.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1429510959
+    "timestamp": 1430121022
   }
 }
