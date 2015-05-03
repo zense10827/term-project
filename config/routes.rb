@@ -12,6 +12,7 @@ TermProject::Application.routes.draw do
   get "course/add"
   get "course/about"
   get "course/search"
+  get "course/menu"
   post "course/information/:id/edit/update", to: 'course#update', as: :id
   post "course/search", to: 'course#search'
   post "timetable/view", to: 'timetable#view'

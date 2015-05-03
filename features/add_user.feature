@@ -14,6 +14,11 @@ Background: user in database
   | allcat        | meaw9999      |
 
 
+Scenario: go to all user page
+  Given I am on all page
+  And I follow "all_user"
+  Then I should see "Show All Users"
+  
 Scenario: add user to database (happy path)
   When I go to the add user page
   And  I fill in "user_uname" with "john"
@@ -27,7 +32,7 @@ Scenario: add user to database (sad path)
   And  I press "add_submit"
   Then I should see "ERROR"
   
-Scenario: add user to database (happy path)
+Scenario: add user to database (sad path)
   When I go to the add user page
   And  I fill in "user_uname" with "robert"
   And  I press "add_submit"

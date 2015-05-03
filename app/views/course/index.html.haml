@@ -1,4 +1,7 @@
+.content
+  = render :partial => 'layouts/menu'
 -#  This file is app/views/course/index.html.haml
+
 %h1 All Course
 
 %p= flash[:notice]
@@ -42,6 +45,6 @@
 %br
 = link_to 'About Us', '/course/about'
 %br
-= link_to 'View all User', '/user/index'
+= link_to 'View all User', '/user/index', :id => "all_user"
 %br
 = link_to 'Time Table', '/timetable/index'

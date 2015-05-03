@@ -54,4 +54,7 @@ class CourseController < ApplicationController
       @found = 0
     end
   end
+  def menu
+  end
+
 end

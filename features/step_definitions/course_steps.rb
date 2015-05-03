@@ -21,3 +21,11 @@ Given /the following user exist/ do |user_table|
     User.create user 
   end
 end
+
+Given /the following studies exist/ do |study_table|
+  study_table.hashes.each do |study|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    Study.create study 
+  end
+end
