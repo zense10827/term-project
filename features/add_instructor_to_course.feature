@@ -8,10 +8,17 @@ Background: instructor in course database
   
   Given the following instructor exist:
   | TID       | instructor_name  | major        | 
-  | 5501      | Sam Smith        | Computer     | 
-  | 5502      | Frank Lampard    | Electrical   |  
-  | 5503      | Steven Gerrard   | Chemical     |
-  | 5504      | Jonh Terry       | Mechanical   |
+  |  1        | Sam Smith        | Computer     | 
+  |  2        | Frank Lampard    | Electrical   |  
+  |  3        | Steven Gerrard   | Chemical     |
+  |  4        | Jonh Terry       | Mechanical   |
+
+  Given the following user exist:
+  | uname        | password      |
+  | sam          | 1234          |
+  | frank        | 5678          |
+  | stev         | bobby555      |
+  | john         | meaw9999      |
 
 
 Scenario: add a course to database (happy path)
