@@ -20,4 +20,8 @@ class UserController < ApplicationController
     flash[:notice] = "User '#{@user.uname}' deleted."
     redirect_to "/user/index"
   end
+  def login
+    @username = params[:uname]
+    @password = params[:password]
+  end
 end

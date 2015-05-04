@@ -9,44 +9,94 @@
         %option{:value => c.id, :selected => @find==c}
           =h c.uname
   = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
+%br
+%table.pure-table.pure-table-bordered
+  %thead
+    %tr.lh
+      %th Day/Time
+      %th{:colspan => "2"} 8.00-9.00
+      %th{:colspan => "2"} 9.00-10.00
+      %th{:colspan => "2"} 10.00-11.00
+      %th{:colspan => "2"} 11.00-12.00
+      %th{:colspan => "2"} 12.00-13.00
+      %th{:colspan => "2"} 13.00-14.00
+      %th{:colspan => "2"} 14.00-15.00
+      %th{:colspan => "2"} 15.00-16.00
+      %th{:colspan => "2"} 16.00-17.00
+    %tr
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+      %th
+  %tbody.lb
+    %tr
+      %td Monday
+      %td{:colspan => "3"}           
+      %td{:colspan => "6"} Software Engineering
+      %td{:colspan => "2"}           
+      %td{:colspan => "6"} Data 2
+      %td{:colspan => "1"}
+    %tr
+      %td Tuesday
+      %td{:colspan => "3"}           
+      %td{:colspan => "6"} Software Engineering
+      %td{:colspan => "2"}           
+      %td{:colspan => "6"} Data 2
+      %td{:colspan => "1"}         
+    %tr
+      %td Wednesday
+      %td{:colspan => "3"}           
+      %td{:colspan => "6"} Software Engineering
+      %td{:colspan => "2"}           
+      %td{:colspan => "6"} Data 2
+      %td{:colspan => "1"}         
+    %tr
+      %td Thursday
+      %td{:colspan => "3"}           
+      %td{:colspan => "6"} Software Engineering
+      %td{:colspan => "2"}           
+      %td{:colspan => "6"} Data 2
+      %td{:colspan => "1"}         
+    %tr
+      %td Friday
+      %td{:colspan => "3"}           
+      %td{:colspan => "6"} Software Engineering
+      %td{:colspan => "2"}           
+      %td{:colspan => "6"} Data 2
+      %td{:colspan => "1"}   
   
 %h2 #{@find.uname} Register
 %table#courses.pure-table.centerino
   %thead
     %tr
       %th Sudject ID
-      %th Subject
-      %th Describe
-      %th Teacher ID
-      %th Section
-      %th Semester
-      %th Curriculum
-      %th Available
+      %th Subject Name
+      %th Day
+      %th StartHr
+      %th StartMin
+      %th Duration
 
   %tbody
     - @courses.each do |course|
       %tr
         %td= course.SID
         %td= course.name
-        %td= course.about
-        %td= link_to "#{course.TID}", "/teacher/#{course.TID}"
-        %td= course.section
-        %td= course.semester
-        %td= course.curriculum
-        %td= course.available
-
-
-%br
-= link_to 'Search Course', '/course/search'
-%br
-= link_to 'Add new Course', '/course/add'
-%br
-= link_to 'Add new Instructor', '/teacher/add'
-%br
-= link_to 'View all Instructor', '/teacher/all'
-%br
-= link_to 'About Us', '/course/about'
-%br
-= link_to 'View all User', '/user/index'
-%br
-= link_to 'Time Table & Registration', '/timetable/index'
+        %td= course.day
+        %td= course.start_hr
+        %td= course.start_min
+        %td= course.duration

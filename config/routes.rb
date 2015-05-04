@@ -3,6 +3,8 @@ TermProject::Application.routes.draw do
   get "timetable/regis"
   get "user/add"
   get "user/index"
+  get "user/login"
+  post "user/login", to: 'user#login'
   get "timetable/index"
   get "teacher/all"
   get "teacher/add"

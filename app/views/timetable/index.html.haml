@@ -13,7 +13,24 @@
       -@users.each do |c|
         %option{:value=>c.id}
           =h c.uname
-  = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
+  .pure-control-group
+    %label
+    = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
+  
+%h1 Login to Student Account
+= form_tag({:action => 'login', :method=>:post, :controller=>:user},{:class => 'pure-form pure-form-aligned'}) do
+  %fieldset
+    %div.pure-control-group
+      = label :login, :uname, 'Username'
+      %input#uname{:name => "uname", :placeholder => "Username", :type => "text"}
+    %div.pure-control-group
+      = label :login, :password, 'Password'
+      %input#password{:name => "password", :placeholder => "Password", :type => "password"}
+    .pure-control-group
+      %label 
+      %input#login_submit.pure-button.pure-button-primary{:name => "commit", :type => "submit", :value => "Login"}
+      %a.pure-button.pure-button-primary{:href => "/user/add"} Sign Up
+  
   
 %h1 Registration
 = form_tag({:action => 'regis'},{:class => 'pure-form pure-form-aligned'}) do
@@ -33,17 +50,36 @@
           =h "#{c.id} # #{c.SID}"
   = submit_tag 'Submit', class: 'pure-button pure-button-primary', :id => 'regis_submit'
 
-%br
-= link_to 'Search Course', '/course/search'
-%br
-= link_to 'Add new Course', '/course/add'
-%br
-= link_to 'Add new Instructor', '/teacher/add'
-%br
-= link_to 'View all Instructor', '/teacher/all'
-%br
-= link_to 'About Us', '/course/about'
-%br
-= link_to 'View all User', '/user/index'
-%br
-= link_to 'Time Table', '/timetable/index'
+%table#courses.pure-table.centerino
+  %thead
+    %tr
+      %th id
+      %th course_id
+      %th day
+      %th sHR
+      %th sMin
+      %th Duration
+  %tbody
+    - @schedules.each do |course|
+      %tr
+        %td= course.id
+        %td= course.course_id
+        %td= course.day
+        %td= course.start_hr
+        %td= course.start_min
+        %td= course.duration
+        
+        
+%table#courses.pure-table.centerino
+  %thead
+    %tr
+      %th id
+      %th course_id
+      %th user_id
+
+  %tbody
+    - @study.each do |course|
+      %tr
+        %td= course.id
+        %td= course.course_id
+        %td= course.user_id

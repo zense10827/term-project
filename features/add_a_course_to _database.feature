@@ -22,12 +22,24 @@ Background: course in database
   | TID       | instructor_name  | major        | 
   | 5501      | Sam Smith        | Computer     | 
 
+  Given the following schedules exist:
+  | day       | duration  | start_hr    | start_min   | course_id |
+  | 1         | 90        | 8           | 0           |  9        |
+  | 3         | 180       | 9           | 30          |  2        |
+
 
 Scenario: add a course to database (happy path)
   When I go to the add page
   And  I fill in "course_SID" with "CN301"
   And  I fill in "course_name" with "Data 2"
   And  I select "2" from "course_semester"
+  And  I fill in "course_curriculum" with "1998"
+  And  I fill in "course_about" with "Data & Algorithm 2"
+  And  I select "Yes" from "course_available"
+  And  I select "Tuesday" from "schedule_day"
+  And  I select "8" from "schedule_start_hr"
+  And  I select "00" from "schedule_start_min"
+  And  I fill in "schedule_duration" with "180"
   And  I press "add_submit"
   Then I should see "CN301 was successfully created."
 

@@ -12,6 +12,7 @@ class TeacherController < ApplicationController
     redirect_to "/course/add"
   end
   def add
+    @users = User.all
   end
   def all
     @teacher = Instructor.all

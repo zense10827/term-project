@@ -12,7 +12,7 @@
     = label :course, :TID, 'Teacher ID'
     %select{:name => 'course[TID]',:id => 'course_TID'}
       -@teacher.each do |c|
-        %option{:value=>c.id}
+        %option{:value=>c.TID}
           =h c.instructor_name
     = link_to 'Add new instructor', '/teacher/add'
   %div.pure-control-group
@@ -33,5 +33,33 @@
   %div.pure-control-group
     = label :course, :available, 'Is available this semester?'
     = select :course, :available, ['Yes','No']
-  %div.pure-control
-  = submit_tag 'Save Changes', class: 'pure-button pure-button-primary', :id => 'add_submit'
+  %div.pure-control-group
+    = label :schedule, :day, 'Day'
+    %select{:name => 'schedule[day]',:id=>'schedule_day'}
+      %option{:value=>1} Monday
+      %option{:value=>2} Tuesday
+      %option{:value=>3} Wednesday
+      %option{:value=>4} Thursday
+      %option{:value=>5} Friday
+  %div.pure-control-group
+    = label :schedule, :start_hr, 'Start time'
+    %select{:name => 'schedule[start_hr]',:id=>'schedule_start_hr'}
+      %option{:value=>8} 8
+      %option{:value=>9} 9
+      %option{:value=>10} 10
+      %option{:value=>11} 11
+      %option{:value=>12} 12
+      %option{:value=>13} 13
+      %option{:value=>14} 14
+      %option{:value=>15} 15
+      %option{:value=>16} 16
+      %option{:value=>17} 17
+    %select{:name => 'schedule[start_min]',:id=>'schedule_start_min'}
+      %option{:value=>0} 00
+      %option{:value=>30} 30
+  %div.pure-control-group
+    = label :schedule, :duration, 'Duration (Minute)'
+    = text_field :schedule, 'duration'
+  %div.pure-control-group
+    %label
+    = submit_tag 'Save Changes', class: 'pure-button pure-button-primary', :id => 'add_submit'

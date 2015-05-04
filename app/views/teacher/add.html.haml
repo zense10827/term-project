@@ -5,8 +5,12 @@
 
 = form_tag({:action => 'create'},{:class => 'pure-form pure-form-aligned'}) do
   %div.pure-control-group
-    = label :instructor, :TID, 'Teacher ID (Number Only)'
-    = text_field :instructor, 'TID'
+    = label :instructor, :TID, 'Username'
+    %select{:name => 'instructor[TID]',:id => 'instructor_TID'}
+      %option{:value=>'Please select'} Please select
+      -@users.each do |c|
+        %option{:value=>c.id}
+          =h c.uname
   %div.pure-control-group
     = label :instructor, :instructor_name, 'Name'
     = text_field :instructor, 'instructor_name'
