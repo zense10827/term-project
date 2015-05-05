@@ -10,6 +10,7 @@
     %tr
       %th User ID
       %th Username
+      %th Password
       %th Time Table
       %th Remove
   %tbody
@@ -17,6 +18,7 @@
       %tr
         %td= user.id
         %td= user.uname
+        %td= user.password
         %td= link_to "View", "/timetable/view/#{user.id}", :id => "view_submit_#{user.uname}"
         %td= link_to "Delete", "#{user.id}", :method => :delete, :id => "delete_submit_#{user.uname}"
     %tr

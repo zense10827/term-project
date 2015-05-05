@@ -18,10 +18,24 @@ Background: course in database
   | CN341     | 5505 | OS        |  1       | ruby  |  002    |   2552     |  No       |
   | CN418     | 1    | Parallel  |  2       | ruby  |  001    |   2552     |  Yes      |
   
+  Given the following schedules exist:
+  | day       | duration  | start_hr    | start_min   | course_id |
+  | 1         | 90        | 8           | 0           |  9        |
+  | 3         | 180       | 9           | 30          |  2        |
+  
   Given the following instructor exist:
   | TID       | instructor_name  | major        | 
-  | 5501      | Sam Smith        | Computer     | 
+  |  1        | Sam Smith        | Computer     | 
+  |  2        | Frank Lampard    | Electrical   |  
+  |  3        | Steven Gerrard   | Chemical     |
+  |  4        | Jonh Terry       | Mechanical   |
 
+  Given the following user exist:
+  | uname        | password      |
+  | sam          | 1234          |
+  | frank        | 5678          |
+  | stev         | bobby555      |
+  | john         | meaw9999      |
 
 Scenario: see information (happy path)
   When I am on all page
@@ -32,7 +46,7 @@ Scenario: see information (happy path)
   And I press "edit_submit"
   Then I should see "CN418 was successfully edited."
   
-Scenario: see information (bad path)
+Scenario: see information (sad path)
   When I am on all page
   And  I follow "info_submit_CN418"
   Then I should see "Details about Parallel"

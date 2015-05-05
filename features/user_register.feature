@@ -26,5 +26,23 @@ Scenario: go to timetable page
   Given I am on the user page
   And I follow "view_submit_adam"
   Then I should see "View Timetable adam"
+
+Scenario: add user
+  Given I am on the user page
+  And I follow "add_user_submit"
+  Then I should see "Add New User"
+  And I fill in "user_uname" with "bada"
+  And I fill in "user_password" with "9999"
+  And I press "add_submit"
+  Then I should see "bada was successfully created."
   
+Scenario: delete user
+  Given I am on the user page
+  And I follow "delete_submit_adam"
+  Then I should see "User 'adam' deleted."
   
+Scenario: user login
+  Given I am on all page
+  
+Scenario: user login
+  Given I am on all page

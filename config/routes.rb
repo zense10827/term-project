@@ -5,6 +5,7 @@ TermProject::Application.routes.draw do
   get "user/index"
   get "user/login"
   post "user/login", to: 'user#login'
+  get "user/logout"
   get "timetable/index"
   get "teacher/all"
   get "teacher/add"
@@ -15,6 +16,7 @@ TermProject::Application.routes.draw do
   get "course/about"
   get "course/search"
   get "course/menu"
+
   post "course/information/:id/edit/update", to: 'course#update', as: :id
   post "course/search", to: 'course#search'
   post "timetable/view", to: 'timetable#view'

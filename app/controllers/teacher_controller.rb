@@ -3,11 +3,11 @@ class TeacherController < ApplicationController
     @teacher = Instructor.find(params[:TID])
   end
   def create
-    if params[:instructor][:major] == "" or params[:instructor][:instructor_name] == "" or params[:instructor][:TID] == ""
+    if params[:instructor][:major] == "" or params[:instructor][:instructor_name] == "" or params[:instructor][:TID] =~ /Please select/
       flash[:notice] = "ERROR"
     else
       @teacher = Instructor.create!(params[:instructor])
-      flash[:notice] = "#{@teacher.TID} was successfully created."
+      flash[:notice] = "#{@teacher.instructor_name} was successfully created."
     end
     redirect_to "/course/add"
   end

@@ -23,15 +23,14 @@ Background: instructor in course database
 
 Scenario: add a course to database (happy path)
   When I go to the add instructor page
-  And  I fill in "instructor_TID" with "5501"
+  And  I select "sam" from "instructor_TID"
   And  I fill in "instructor_instructor_name" with "Diago Costa"
   And  I fill in "instructor_major" with "Civil"
   And  I press "add_submit"
-  Then I should see "5501 was successfully created."
+  Then I should see "Diago Costa was successfully created."
 
 Scenario: add a course to database (sad path)
   When I go to the add instructor page
-  And  I fill in "instructor_TID" with "5501"
   And  I fill in "instructor_instructor_name" with "Diago Costa"
   And  I press "add_submit"
   Then I should see "ERROR"
@@ -47,7 +46,6 @@ Scenario: add a course to database (sad path)
   
 Scenario: add a course to database (sad path)
   When I go to the add instructor page
-  And  I fill in "instructor_TID" with "5501"
   And  I fill in "instructor_major" with "Civil"
   And  I press "add_submit"
   Then I should see "ERROR"

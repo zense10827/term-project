@@ -1,6 +1,5 @@
 .content
   = render :partial => 'layouts/menu'
--#  This file is app/views/course/index.html.haml
 
 %h1 All Course
 
@@ -17,8 +16,9 @@
       %th Semester
       %th Curriculum
       %th Available
-      %th Delete
-      %th Option
+      -if @admin
+        %th Delete
+        %th Option
   %tbody
     - @courses.each do |course|
       %tr
@@ -30,7 +30,8 @@
         %td= course.semester
         %td= course.curriculum
         %td= course.available
-        %td= link_to "Delete", "#{course.id}", :method => :delete, :id => "delete_submit_#{course.SID}"
-        %td= link_to "#{course.SID}", "information/#{course.id}", :id => "info_submit_#{course.SID}"
+        -if @admin
+          %td= link_to "Delete", "#{course.id}", :method => :delete, :id => "delete_submit_#{course.SID}"
+          %td= link_to "#{course.SID}", "information/#{course.id}", :id => "info_submit_#{course.SID}"
     %tr
       %td{:colspan => 10}= link_to 'Add new Course', '/course/add'

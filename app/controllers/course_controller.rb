@@ -1,6 +1,13 @@
 class CourseController < ApplicationController
   def index
     @courses = Course.all
+    @admin =nil
+    if session[:uid] 
+      @user = User.find(session[:uid])
+      if @user.uname == 'admin'
+        @admin = true
+      end
+    end
   end
   def add
     @teacher = Instructor.all
@@ -27,7 +34,7 @@ class CourseController < ApplicationController
   end
   def information
     @course = Course.find(params[:id])
-    @teacher = Instructor.where("TID = ?",@course.TID).first
+    @teacher = Instructor.where("id = ?",@course.TID).first
     @schedule = Schedule.where("course_id = ?",params[:id]).first
   end
   def update
@@ -69,10 +76,23 @@ class CourseController < ApplicationController
       @found = Course.where("#{params[:by]} = ?", params[:name]).count
       @by = params[:by]
       @seachBox = params[:name]
+      if session[:uid] 
+        @user = User.find(session[:uid])
+        if @user.uname == 'admin'
+          @admin = true
+        end
+      end
     else
       @by = 'SID'
       @seachBox = ''
       @found = 0
+      @admin =nil
+      if session[:uid] 
+        @user = User.find(session[:uid])
+        if @user.uname == 'admin'
+          @admin = true
+        end
+      end
     end
   end
   def menu

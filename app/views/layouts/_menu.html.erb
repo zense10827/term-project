@@ -1,13 +1,13 @@
 <div class="pure-menu pure-menu-horizontal">
     <ul class="pure-menu-list">
-        <li class="pure-menu-item"><a href="/course/index" class="pure-menu-link pure-menu-heading">Home</a></li>
+        <li class="pure-menu-item"><a href="/course/index" class="pure-menu-link pure-menu-heading pure-button">Home</a></li>
         <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
             <a href="/course/index" id="menuLink1" class="pure-menu-link">Course</a>
             <ul class="pure-menu-children">
                 <li class="pure-menu-item"><a href="/course/index" class="pure-menu-link">Show</a></li>
                 <li class="pure-menu-item"><a href="/course/search" class="pure-menu-link">Search</a></li>
                 <li class="pure-menu-item"><a href="/course/add" class="pure-menu-link">Add</a></li>
-            </ul
+            </ul>
         </li>
         <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
             <a href="/teacher/all" id="menuLink2" class="pure-menu-link">Instructor</a>
@@ -24,9 +24,14 @@
             </ul>
         </li>
         <li class="pure-menu-item"><a href="/timetable/index" class="pure-menu-link">Time Table</a></li>
-
         <li class="pure-menu-item"><a href="/course/about" class="pure-menu-link">About us</a></li>
-<li class="pure-menu-item"><a href="javascript:history.back()"  class="pure-menu-link">Back</a></li>
+        <li class="pure-menu-item"><a href="javascript:history.back()"  class="pure-menu-link">Back</a></li>
         
+        
+        <% if session[:uid] %>
+            <li class="pure-menu-item"><a href="/user/logout" class="pure-menu-link pure-button-primary">Logout</a></li>
+        <% else %>
+            <li class="pure-menu-item"><a href="/user/login" class="pure-menu-link pure-button-primary">Login</a></li>
+        <% end %>
     </ul>
 </div>

@@ -1,5 +1,8 @@
 class TimetableController < ApplicationController
   def index
+    if session[:uid] == nil
+      redirect_to "/user/login"
+    end
     @users = User.all
     @courses = Course.all
     @schedules = Schedule.all

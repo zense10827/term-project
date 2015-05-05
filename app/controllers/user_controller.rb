@@ -10,18 +10,39 @@ class UserController < ApplicationController
       flash[:notice] = "ERROR"
     else
       @user = User.create!(params[:user])
-      flash[:notice] = "#{@user.id} #{@user.uname} was successfully created."
+      flash[:notice] = "#{@user.uname} was successfully created."
     end
-    redirect_to "/user/index"
+    redirect_to "/user/login"
   end
   def destroy
     @user = User.find(params[:id])
     @user.destroy
     flash[:notice] = "User '#{@user.uname}' deleted."
-    redirect_to "/user/index"
+    redirect_to "/user/login"
   end
   def login
-    @username = params[:uname]
-    @password = params[:password]
+    if session[:uid] != nil
+      redirect_to "/timetable/index"
+    end
+    if params[:uname] == "" and params[:password] == ""
+     flash[:notice] = "Invalid username or password"
+    else 
+      @user = User.where("uname = ? AND password = ?",params[:uname],params[:password]).first
+      if @user
+        flash[:notice] = "Welcome #{@user.uname}"
+        session[:uid] = @user.id
+        redirect_to "/timetable/index"
+      else
+        if params[:uname] and params[:password]
+          flash[:notice] = "Invalid username or password"
+        else
+          flash[:notice] = "Please Login"
+        end
+      end
+    end
+  end
+  def logout
+    reset_session
+    redirect_to "/user/login"
   end
 end

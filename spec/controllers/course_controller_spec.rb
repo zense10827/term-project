@@ -78,7 +78,13 @@ RSpec.describe CourseController, :type => :controller do
     it { expect(@article.SID).to eql "CN555" }
   end
 
-
+  describe 'search' do
+    it 'should return results' do
+      get :search, { :SID=>"CN555" }
+      response.should be_ok
+    end
+    it { is_expected.to have_table("courses") }
+  end
   
 	describe 'DELETE destroy' do 
     it "deletes the subject" do 
