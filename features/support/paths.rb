@@ -22,7 +22,9 @@ module NavigationHelpers
     when /^the edit page/ then '/course/information/#{"@course.id"}/edit'
     when /^the add user page/ then '/user/add'
     when /^the user page/ then '/user/index'
-    when /^the search page/ then 'course/search'
+    when /^the search page/ then '/course/search'
+    when /^the login page/ then '/user/login'
+    when /^the timetable page/ then '/timetable/index'
     when /^the home\s?page$/
       '/'
 

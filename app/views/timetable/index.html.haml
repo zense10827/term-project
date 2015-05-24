@@ -8,78 +8,39 @@
 = form_tag({:action => 'view'},{:class => 'pure-form pure-form-aligned'}) do
   %div.pure-control-group
     = label :schedule, :uid, 'Username'
-    %select{:name => 'id',:id => 'id'}
-      %option{:value=>'Please select'} Please select
-      -@users.each do |c|
-        %option{:value=>c.id}
-          =h c.uname
+    %input{:value=>"#{session[:uname]}",:disabled=>true}
+    -if session[:uname] == 'admin'
+      %select{:name=>"id", :id=>"id"}
+        %option{:value=>"Please select"} Please select
+        -@users.each do |c|
+          %option{:value=>c.id}
+            =h "#{c.uname}"
+    -else
+      %input#id{:name => "id", :type => "hidden", :value=>"#{session[:uid]}"}
   .pure-control-group
     %label
     = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
-  
-%h1 Login to Student Account
-= form_tag({:action => 'login', :method=>:post, :controller=>:user},{:class => 'pure-form pure-form-aligned'}) do
-  %fieldset
-    %div.pure-control-group
-      = label :login, :uname, 'Username'
-      %input#uname{:name => "uname", :placeholder => "Username", :type => "text"}
-    %div.pure-control-group
-      = label :login, :password, 'Password'
-      %input#password{:name => "password", :placeholder => "Password", :type => "password"}
-    .pure-control-group
-      %label 
-      %input#login_submit.pure-button.pure-button-primary{:name => "commit", :type => "submit", :value => "Login"}
-      %a.pure-button.pure-button-primary{:href => "/user/add"} Sign Up
-  
   
 %h1 Registration
 = form_tag({:action => 'regis'},{:class => 'pure-form pure-form-aligned'}) do
   %div.pure-control-group
     = label :schedule, :uid, 'Username'
-    %select{:name => 'study[user_id]',:id => 'study_user_id'}
-      %option{:value=>'Please select'} Please select
-      -@users.each do |c|
-        %option{:value=>c.id}
-          =h c.uname
+    %input{:value=>"#{session[:uname]}",:disabled=>true}
+    -if session[:uname] == 'admin'
+      %select{:name=>"study[user_id]", :id=>"study_user_id"}
+        %option{:value=>"Please select"} Please select
+        -@users.each do |c|
+          %option{:value=>c.id}
+            =h "#{c.uname}"
+    -else
+      %input#study_user_id{:name => "study[user_id]", :type => "hidden", :value=>"#{session[:uid]}"}
   %div.pure-control-group
     = label :schedule, :uid, 'Course'
     %select{:name => 'study[course_id]',:id => 'study_course_id'}
       %option{:value=>'Please select'} Please select
       -@courses.each do |c|
         %option{:value=>c.id}
-          =h "#{c.id} # #{c.SID}"
-  = submit_tag 'Submit', class: 'pure-button pure-button-primary', :id => 'regis_submit'
-
-%table#courses.pure-table.centerino
-  %thead
-    %tr
-      %th id
-      %th course_id
-      %th day
-      %th sHR
-      %th sMin
-      %th Duration
-  %tbody
-    - @schedules.each do |course|
-      %tr
-        %td= course.id
-        %td= course.course_id
-        %td= course.day
-        %td= course.start_hr
-        %td= course.start_min
-        %td= course.duration
-        
-        
-%table#courses.pure-table.centerino
-  %thead
-    %tr
-      %th id
-      %th course_id
-      %th user_id
-
-  %tbody
-    - @study.each do |course|
-      %tr
-        %td= course.id
-        %td= course.course_id
-        %td= course.user_id
+          =h "#{c.SID}: #{c.name}"
+  .pure-control-group
+    %label
+    = submit_tag 'Submit', class: 'pure-button pure-button-primary', :id => 'regis_submit'

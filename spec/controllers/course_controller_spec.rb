@@ -11,13 +11,25 @@ RSpec.describe CourseController, :type => :controller do
     end
   end
   describe 'create' do
+    before(:each) do
+      session[:uid]="15"
+      session[:uname]="admin"
+    end
     it 'should add a new course' do
       expect do
-        post :create, :course => {:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"}
+        param = { 
+          :course => {:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"},
+          :schedule => {:day=>"1",:start_hr=>"9",:start_min=>"0"}
+        }
+        post :create, param
       end.to change(Course,:count).by(1) 
     end
-    it "redirects to the new contact" do 
-      post :create, :course => {:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"}
+    it "redirects to the new course" do 
+      param = { 
+          :course => {:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"},
+          :schedule => {:day=>"1",:start_hr=>"9",:start_min=>"0"}
+      }
+      post :create, param
       response.should redirect_to "/course/index"
     end
     
@@ -48,26 +60,37 @@ RSpec.describe CourseController, :type => :controller do
   end
   
   describe 'edit and update' do
+    before(:each) do
+      session[:uid]="15"
+      session[:uname]="admin"
+    end
     it 'should be render a edit page' do
       teacher = Instructor.create!( {:TID=>"13",:instructor_name=>"Mook Cat",:major=>"CN"})
       article = Course.create!({:SID=>"CN555",:TID=>"#{teacher.to_param}",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"})
+      study = Schedule.create!({:course_id=>"#{article.id}",:day=>"2",:start_min=>"0",:start_hr=>"9",:duration=>"60"})
       post :edit, {:id => article.to_param}
       response.should render_template('edit')
     end
-    let(:attr) do 
-      {:SID=>"CN555",:TID=>"13",:name=>"New name of Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"}
-    end
+    
     before(:each) do
       @article = Course.create!({:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"})
-      put :update, :id => @article.id, :course => attr
+      @schedule = Schedule.create!({:course_id=>"#{@article.id}",:day=>"1",:start_hr=>"9",:start_min=>"0"})
+      param = { 
+          :course => {:SID=>"CN555",:TID=>"13",:name=>"Test Update",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"},
+          :schedule => {:day=>"1",:start_hr=>"9",:start_min=>"0"},
+          :id => @article.id
+      }
+      put :update, param
       @article.reload
     end
     it { expect(response).to redirect_to("/course/information/#{@article.id}") }
-    it { expect(@article.name).to eql attr[:name] }
+    it { expect(@article.name).to eql "Test Update" }
   end
+  
   describe 'edit and update (SAD: No SID)' do
     let(:attr) do 
       {:SID=>"",:TID=>"13",:name=>"New name of Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"}
+      
     end
     before(:each) do
       @article = Course.create!({:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"})
@@ -79,11 +102,21 @@ RSpec.describe CourseController, :type => :controller do
   end
 
   describe 'search' do
-    it 'should return results' do
-      get :search, { :SID=>"CN555" }
+    before(:each) do
+      @article = Course.create!({:SID=>"CN555",:TID=>"13",:name=>"Test Controller",:section=>"54321",:semester=>"2",:curriculum=>"2554",:about=>"Test Rspec",:available=>"Yes"})
+    end
+    it 'should return results when search by Sudject ID' do
+      get :search, { :by=>"SID", :name=>"CN555" }
       response.should be_ok
     end
-    it { is_expected.to have_table("courses") }
+    it 'should return results when search by Subject name' do
+      get :search, { :by=>"name", :name=>"Test Controller" }
+      response.should be_ok
+    end
+    it 'should not found' do
+      get :search, { :by=>"name", :name=>"Can You Find Me" }
+      expect(@course).to eql nil;
+    end
   end
   
 	describe 'DELETE destroy' do 
@@ -97,6 +130,12 @@ RSpec.describe CourseController, :type => :controller do
       article = Course.create!(:SID=>"CN555")
       delete :destroy, {:id => article.to_param}
       response.should redirect_to "/course/index"
+    end
+  end
+  describe 'about' do
+    it 'should be render about' do
+      get :about
+      expect(response).to render_template('about')
     end
   end
 end

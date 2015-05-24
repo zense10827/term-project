@@ -45,6 +45,7 @@
   %li
     Duration:
     = @schedule.duration
-  %li
-    = link_to "Edit",  "#{@course.id}/edit", :id => "edit_submit_#{@course.SID}"
+  - if session[:uname] == 'admin'
+    %li
+      = link_to "Edit",  "#{@course.id}/edit", :id => "edit_submit_#{@course.SID}"
     

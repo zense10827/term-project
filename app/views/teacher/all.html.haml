@@ -23,6 +23,7 @@
         %td= aj.instructor_name
         %td= aj.major
         %td= link_to "Delete", "#{aj.id}", :method => :delete, :id => "delete_submit_#{aj.instructor_name}"
-        %td= link_to "#{aj.id}", "teacher/index/#{aj.id}"
-    %tr
-      %td{:colspan => 10}= link_to 'Add new Instructor', '/teacher/add'
+        %td= link_to "#{aj.id}", "/teacher/index/#{aj.id}"
+    -if session[:uname] == 'admin'
+      %tr
+        %td{:colspan => 10}= link_to 'Add new Instructor', '/teacher/add'

@@ -17,5 +17,6 @@
 - [:notice, :error, :success].each do |key|
   - unless flash[key].blank?
     %p.pure-button{ :class => "flash #{key}" }= flash[key] 
-%p Only admin account can see, edit, delete on Course, Instructor,User
+%p Only admin account can see, edit, delete on Course, Instructor, User
 %p Student user can regis courses.
+%p Anyone can sign up.

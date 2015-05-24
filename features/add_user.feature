@@ -12,7 +12,12 @@ Background: user in database
   | anna          | 5678          |
   | bobby         | bobby555      |
   | allcat        | meaw9999      |
-
+  | admin         | 1234          |
+  
+  Given I go to the login page
+    And  I fill in "uname" with "admin"
+    And  I fill in "password" with "1234"
+    And  I press "login_submit"
 
 Scenario: add user to database (happy path)
   When I go to the add user page

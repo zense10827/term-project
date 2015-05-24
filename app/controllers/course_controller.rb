@@ -2,14 +2,11 @@ class CourseController < ApplicationController
   def index
     @courses = Course.all
     @admin =nil
-    if session[:uid] 
-      @user = User.find(session[:uid])
-      if @user.uname == 'admin'
-        @admin = true
-      end
-    end
   end
   def add
+    if session[:uid] == nil
+      redirect_to "/user/login"
+    end
     @teacher = Instructor.all
   end
   def create
@@ -85,7 +82,7 @@ class CourseController < ApplicationController
     else
       @by = 'SID'
       @seachBox = ''
-      @found = 0
+      @found = -1
       @admin =nil
       if session[:uid] 
         @user = User.find(session[:uid])

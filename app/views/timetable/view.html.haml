@@ -4,13 +4,9 @@
 = form_tag({:action => 'view'},{:class => 'pure-form pure-form-aligned'}) do
   %div.pure-control-group
     = label :schedule, :uid, 'Username'
-    %select{:name => 'id',:id => 'id'}
-      -@users.each do |c|
-        %option{:value => c.id, :selected => @find==c}
-          =h c.uname
-  = submit_tag 'View Timetable', class: 'pure-button pure-button-primary', :id => 'view_submit'
+    %input{:value=>"#{session[:uname]}",:disabled=>true}
 %br
-%table.pure-table.pure-table-bordered
+%table#timetable.pure-table.pure-table-bordered
   %thead
     %tr.lh
       %th Day/Time
@@ -46,39 +42,79 @@
   %tbody.lb
     %tr
       %td Monday
-      %td{:colspan => "3"}           
-      %td{:colspan => "6"} Software Engineering
-      %td{:colspan => "2"}           
-      %td{:colspan => "6"} Data 2
-      %td{:colspan => "1"}
+      -d=0
+      -@course_monday.each do |c|
+        -a=0
+        -b=0
+        -a+=2*(c.start_hr-8)+(c.start_min/30)-d
+        -if a != 0
+          %td{:colspan => a}
+        -b+=c.duration/30
+        %td{:colspan => b} #{c.SID}
+        -d+=a+b
+      -if d<18
+        -t=18-d
+        %td{:colspan => t}
     %tr
       %td Tuesday
-      %td{:colspan => "3"}           
-      %td{:colspan => "6"} Software Engineering
-      %td{:colspan => "2"}           
-      %td{:colspan => "6"} Data 2
-      %td{:colspan => "1"}         
+      -d=0
+      -@course_tuesday.each do |c|
+        -a=0
+        -b=0
+        -a+=2*(c.start_hr-8)+(c.start_min/30)-d
+        -if a != 0
+          %td{:colspan => a}
+        -b+=c.duration/30
+        %td{:colspan => b} #{c.SID}
+        -d+=a+b
+      -if d<18
+        -t=18-d
+        %td{:colspan => t}     
     %tr
       %td Wednesday
-      %td{:colspan => "3"}           
-      %td{:colspan => "6"} Software Engineering
-      %td{:colspan => "2"}           
-      %td{:colspan => "6"} Data 2
-      %td{:colspan => "1"}         
+      -d=0
+      -@course_wednesday.each do |c|
+        -a=0
+        -b=0
+        -a+=2*(c.start_hr-8)+(c.start_min/30)-d
+        -if a != 0
+          %td{:colspan => a}
+        -b+=c.duration/30
+        %td{:colspan => b} #{c.SID}
+        -d+=a+b
+      -if d<18
+        -t=18-d
+        %td{:colspan => t}     
     %tr
       %td Thursday
-      %td{:colspan => "3"}           
-      %td{:colspan => "6"} Software Engineering
-      %td{:colspan => "2"}           
-      %td{:colspan => "6"} Data 2
-      %td{:colspan => "1"}         
+      -d=0
+      -@course_thursday.each do |c|
+        -a=0
+        -b=0
+        -a+=2*(c.start_hr-8)+(c.start_min/30)-d
+        -if a != 0
+          %td{:colspan => a}
+        -b+=c.duration/30
+        %td{:colspan => b} #{c.SID}
+        -d+=a+b
+      -if d<18
+        -t=18-d
+        %td{:colspan => t}        
     %tr
       %td Friday
-      %td{:colspan => "3"}           
-      %td{:colspan => "6"} Software Engineering
-      %td{:colspan => "2"}           
-      %td{:colspan => "6"} Data 2
-      %td{:colspan => "1"}   
+      -d=0
+      -@course_friday.each do |c|
+        -a=0
+        -b=0
+        -a+=2*(c.start_hr-8)+(c.start_min/30)-d
+        -if a != 0
+          %td{:colspan => a}
+        -b+=c.duration/30
+        %td{:colspan => b} #{c.SID}
+        -d+=a+b
+      -if d<18
+        -t=18-d
+        %td{:colspan => t}  
   
 %h2 #{@find.uname} Register
 %table#courses.pure-table.centerino
@@ -89,14 +125,14 @@
       %th Day
       %th StartHr
       %th StartMin
-      %th Duration
+      %th Duration(Min)
 
   %tbody
     - @courses.each do |course|
       %tr
         %td= course.SID
         %td= course.name
-        %td= course.day
+        %td= @day[course.day-1]
         %td= course.start_hr
         %td= course.start_min
         %td= course.duration

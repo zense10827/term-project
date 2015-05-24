@@ -10,13 +10,14 @@ TermProject::Application.routes.draw do
   get "teacher/all"
   get "teacher/add"
   get "teacher/index"
-  get "teacher/:TID", to: 'teacher#index', as: :tid
+  get "teacher/index/:TID", to: 'teacher#index', as: :tid
   get "course/index"
   get "course/add"
   get "course/about"
   get "course/search"
   get "course/menu"
-
+  post "user/create", to: 'user#create'
+  post "course/create", to: 'course#create'
   post "course/information/:id/edit/update", to: 'course#update', as: :id
   post "course/search", to: 'course#search'
   post "timetable/view", to: 'timetable#view'

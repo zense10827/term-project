@@ -36,6 +36,12 @@ Background: course in database
   | frank        | 5678          |
   | stev         | bobby555      |
   | john         | meaw9999      |
+  | admin        | 1234          |
+  
+  Given I go to the login page
+    And  I fill in "uname" with "admin"
+    And  I fill in "password" with "1234"
+    And  I press "login_submit"
   
 
 Scenario: add a course to database (happy path)
@@ -86,4 +92,3 @@ Scenario: delete a course in database
   Given I am on all page
   And I follow "delete_submit_CN418"
   Then I should see "Course 'CN418' deleted."
-  

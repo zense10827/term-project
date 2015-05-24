@@ -32,10 +32,16 @@ Background: course in database
 
   Given the following user exist:
   | uname        | password      |
+  | admin        | 1234          |
   | sam          | 1234          |
   | frank        | 5678          |
   | stev         | bobby555      |
   | john         | meaw9999      |
+  
+  Given  I go to the login page
+    And  I fill in "uname" with "admin"
+    And  I fill in "password" with "1234"
+    And  I press "login_submit"
 
 Scenario: see information (happy path)
   When I am on all page
